@@ -1,31 +1,34 @@
 
 import nltk
+import csv
 
-sentence1 = "This is a sample sentence, to be replaced by an abstract"
-sentence2 = "This is a different sample sentence!"
-
-#step 1: create a vocabulary of known words
-
-vocab = nltk.word_tokenize(sentence1) + nltk.word_tokenize(sentence2)
-#tokens now has the words from both sentences, but it puts punctuation into separate words
+vocab = []
+with open('dataset/train_first_three_no_header.csv') as train_file:
+	reader = csv.reader(train_file, delimiter=',')
+	for row in reader:
+		vocab.extend(nltk.word_tokenize(f'{row[2]}'))
 
 vocab = list(dict.fromkeys(vocab))
 
-#vocab has the set of unique tokens from both sentences
+#Removed some punctuation (there is a more sophisticated way to do this! Need a tokenizer which will remove punctuation and common words)
+vocab = [i for i in vocab if (i != "!" and i != "," and i != "." and i != "(" and i != ")" and i != ";" and i != ":")]
+
+with open('vocab.txt','w') as f:
+	f.write(','.join(vocab))
+
 vocabSize = len(vocab)
 
-#generate a vector of sentence1
-#for later - update to use NUMPY to generate list of 0s instead
-vector1 = [0] * vocabSize
+#generate a vector for each abstract 
+with open('dataset/train_first_three_no_header.csv') as train_file:
+	reader = csv.reader(train_file, delimiter=',')
+	for row in reader:
+		vector = [0] * vocabSize
+		tokens = nltk.word_tokenize(f'{row[2]}')
+		i = 0
+		while i < vocabSize:
+			vector[i] = tokens.count(vocab[i])
+			i = i+1
+		print(vector)
 
-#tokenize sentence1
-tokens1 = nltk.word_tokenize(sentence1)
-
-i = 0
-while i < vocabSize:
-	vector1[i] = tokens1.count(vocab[i])
-	i = i+1
-
-print(vocab)
-print(tokens1)
-print(vector1)
+#print(vocab)
+#print(vocabSize)
