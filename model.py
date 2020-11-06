@@ -144,12 +144,12 @@ def main() :
     test_input_path = 'dataset/test_no_header.csv'
 
     label_row_dict = {
-        "Computer Science" : 3,
-        "Physics" : 4,
-        "Mathematics" : 5,
-        "Statistics" : 6,
-        "Quantitative Biology" : 7,
-        "Quantitative Finanace" : 8
+        'Computer Science' : 3,
+        'Physics' : 4,
+        'Mathematics' : 5,
+        'Statistics' : 6,
+        'Quantitative Biology' : 7,
+        'Quantitative Finanace' : 8
     }
 
     train_matrix, dictionary = pre_process_train(train_input_path)
