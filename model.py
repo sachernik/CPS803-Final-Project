@@ -106,7 +106,7 @@ def get_labels(dataset_input_path, label_row) :
     return labels
 
 
-def pre_process_train(train_input_path, dictionary_path, train_matrix_path) :
+def pre_process_train(train_input_path) :
     abstracts = []
     with open(train_input_path) as train_file :
         reader = csv.reader(train_file, delimiter=',')
@@ -138,9 +138,9 @@ def pre_process_test(test_input_path, dictionary) :
     return matrix
 
 def main() :
-    train_input_path = 'dataset/train_first_three_no_header.csv'
-    dictionary_path = 'data_processing/dictionary.txt'
-    train_matrix_path = 'data_processing/train_matrix.txt'
+    train_input_path = 'dataset/train_no_header.csv'
+    #dictionary_path = 'data_processing/dictionary.txt'
+    #train_matrix_path = 'data_processing/train_matrix.txt'
     test_input_path = 'dataset/test_no_header.csv'
 
     label_row_dict = {
@@ -152,7 +152,7 @@ def main() :
         "Quantitative Finanace" : 8
     }
 
-    train_matrix, dictionary = pre_process_train(train_input_path, dictionary_path, train_matrix_path)
+    train_matrix, dictionary = pre_process_train(train_input_path)
     test_matrix = pre_process_test(test_input_path, dictionary)
 
     for category in label_row_dict :
