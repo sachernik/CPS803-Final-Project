@@ -97,14 +97,12 @@ def predict_naive_bayes(model, test_matrix) :
 
     return pred
 
-def get_labels(dataset_input_path) :
-    # Started with SINGLE DIMENSION to check for COMPUTER SCIENCE ONLY
-    # Need to add the other dimensions!!!
+def get_labels(dataset_input_path, label_row) :
     labels = []
     with open(dataset_input_path) as dataset :
         reader = csv.reader(dataset, delimiter=',')
         for row in reader :
-            labels.append(int((f'{row[3]}')))
+            labels.append(int((f'{row[label_row]}')))
     return labels
 
 
@@ -117,7 +115,7 @@ def pre_process_train(train_input_path, dictionary_path, train_matrix_path) :
 
     dictionary = create_dictionary(abstracts)
     matrix = create_matrix(abstracts, dictionary)
-    labels = get_labels(train_input_path)
+    #labels = get_labels(train_input_path)
 
     """
     with open(dictionary_path,'w') as f : # This is not currently saving the indexes
@@ -126,7 +124,7 @@ def pre_process_train(train_input_path, dictionary_path, train_matrix_path) :
     #np.savetxt(train_matrix_path, matrix)
     """    
 
-    return matrix, dictionary, labels
+    return matrix, dictionary
 
 def pre_process_test(test_input_path, dictionary) :
     abstracts = []
@@ -135,27 +133,41 @@ def pre_process_test(test_input_path, dictionary) :
         for row in reader :
             abstracts.append(f'{row[2]}')
     matrix = create_matrix(abstracts, dictionary)
-    labels = get_labels(test_input_path)
+    #labels = get_labels(test_input_path)
 
-    return matrix, labels
+    return matrix
 
 def main() :
     train_input_path = 'dataset/train_first_three_no_header.csv'
     dictionary_path = 'data_processing/dictionary.txt'
     train_matrix_path = 'data_processing/train_matrix.txt'
-    test_input_path = 'dataset/test_three_no_header.csv'
+    test_input_path = 'dataset/test_no_header.csv'
 
-    train_matrix, dictionary, train_labels = pre_process_train(train_input_path, dictionary_path, train_matrix_path)
+    label_row_dict = {
+        "Computer Science" : 3,
+        "Physics" : 4,
+        "Mathematics" : 5,
+        "Statistics" : 6,
+        "Quantitative Biology" : 7,
+        "Quantitative Finanace" : 8
+    }
 
-    #print('train labels: ', train_labels)
+    train_matrix, dictionary = pre_process_train(train_input_path, dictionary_path, train_matrix_path)
+    test_matrix = pre_process_test(test_input_path, dictionary)
 
-    nb_model = fit_naive_bayes(train_matrix, train_labels)
+    for category in label_row_dict :
+        train_labels = get_labels(train_input_path, label_row_dict[category])
+        nb_model = fit_naive_bayes(train_matrix, train_labels)
 
-    test_matrix, test_labels = pre_process_test(test_input_path, dictionary)
-
-    pred_labels = predict_naive_bayes(nb_model, test_matrix)
+        test_labels = get_labels(test_input_path, label_row_dict[category])
+        print('test labels for', category, ":", test_labels)
+        pred_labels = predict_naive_bayes(nb_model, test_matrix)
+        print('predicted labels for', category, ":", pred_labels)
+   
+        accuracy = np.mean(test_labels == pred_labels) * 100
+        print('Naive Bayes accuracy for', category, ":", accuracy, "%")
     #print(len(pred_labels))
-    print('pred_labels: ', pred_labels)
+    #print('pred_labels: ', pred_labels)
 
 
 if __name__ == "__main__":
