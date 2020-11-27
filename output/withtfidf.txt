@@ -1,0 +1,94 @@
+creating dictionary
+    dictionary size before removing rare words:  72840
+    dictionary size after removing rare words:  13885
+Time for preprocessing:  125.21  seconds
+Naive Bayes accuracy for Computer_Science : 84.97854077253218 %
+    Number of True Positives:  2361
+    Number of True Negatives:  2985
+    Number of False Positives:  699
+    Number of False Negatives  246
+    Overall Accuracy:  84.98
+    Misclassification Rate:  15.02
+    True positive rate:  90.56
+    False positive rate:  18.97
+    True negative rate:  81.03
+    False negative rate:  9.44
+    Precision for positives:  77.16
+    Precision for negatives:  92.39
+    Prevalence of positives:  41.44
+    Prevalence of negatives:  58.56
+Naive Bayes accuracy for Physics : 93.19663010650136 %
+    Number of True Positives:  1522
+    Number of True Negatives:  4341
+    Number of False Positives:  150
+    Number of False Negatives  278
+    Overall Accuracy:  93.2
+    Misclassification Rate:  6.8
+    True positive rate:  84.56
+    False positive rate:  3.34
+    True negative rate:  96.66
+    False negative rate:  15.44
+    Precision for positives:  91.03
+    Precision for negatives:  93.98
+    Prevalence of positives:  28.61
+    Prevalence of negatives:  71.39
+Naive Bayes accuracy for Mathematics : 89.07963757749165 %
+    Number of True Positives:  1436
+    Number of True Negatives:  4168
+    Number of False Positives:  437
+    Number of False Negatives  250
+    Overall Accuracy:  89.08
+    Misclassification Rate:  10.92
+    True positive rate:  85.17
+    False positive rate:  9.49
+    True negative rate:  90.51
+    False negative rate:  14.83
+    Precision for positives:  76.67
+    Precision for negatives:  94.34
+    Prevalence of positives:  26.8
+    Prevalence of negatives:  73.2
+Naive Bayes accuracy for Statistics : 83.37307264345891 %
+    Number of True Positives:  1437
+    Number of True Negatives:  3808
+    Number of False Positives:  891
+    Number of False Negatives  155
+    Overall Accuracy:  83.37
+    Misclassification Rate:  16.63
+    True positive rate:  90.26
+    False positive rate:  18.96
+    True negative rate:  81.04
+    False negative rate:  9.74
+    Precision for positives:  61.73
+    Precision for negatives:  96.09
+    Prevalence of positives:  25.31
+    Prevalence of negatives:  74.69
+Naive Bayes accuracy for Quantitative_Biology : 94.5795580988714 %
+    Number of True Positives:  108
+    Number of True Negatives:  5842
+    Number of False Positives:  305
+    Number of False Negatives  36
+    Overall Accuracy:  94.58
+    Misclassification Rate:  5.42
+    True positive rate:  75.0
+    False positive rate:  4.96
+    True negative rate:  95.04
+    False negative rate:  25.0
+    Precision for positives:  26.15
+    Precision for negatives:  99.39
+    Prevalence of positives:  2.29
+    Prevalence of negatives:  97.71
+Naive Bayes accuracy for Quantitative_Finance : 97.86997297726911 %
+    Number of True Positives:  62
+    Number of True Negatives:  6095
+    Number of False Positives:  118
+    Number of False Negatives  16
+    Overall Accuracy:  97.87
+    Misclassification Rate:  2.13
+    True positive rate:  79.49
+    False positive rate:  1.9
+    True negative rate:  98.1
+    False negative rate:  20.51
+    Precision for positives:  34.44
+    Precision for negatives:  99.74
+    Prevalence of positives:  1.24
+    Prevalence of negatives:  98.76
