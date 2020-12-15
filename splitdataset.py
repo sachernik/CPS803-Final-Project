@@ -73,9 +73,9 @@ def main() :
     test_labels_path = 'dataset/test_labels.csv'
     split = 14681
 
-    split_dataset(orig_path, train_path, test_path, header_path, split)
-    split_labels(train_path, train_data_path, train_labels_path)
-    split_labels(test_path, test_data_path, test_labels_path)
+    #split_dataset(orig_path, train_path, test_path, header_path, split)
+    #split_labels(train_path, train_data_path, train_labels_path)
+    #split_labels(test_path, test_data_path, test_labels_path)
 
     tiny_dataset_path = 'tinydataset/original_data.csv'
     tiny_train_path = 'tinydataset/train.csv'
@@ -85,13 +85,14 @@ def main() :
     tiny_train_labels_path = 'tinydataset/train_labels.csv'
     tiny_test_data_path = 'tinydataset/test_data.csv'
     tiny_test_labels_path = 'tinydataset/test_labels.csv'
-    tiny_size = 100
-    tiny_split = 70
+    tiny_size = 1000
+    tiny_split = 700
 
     make_tiny_dataset(orig_path, tiny_dataset_path, tiny_size)
     split_dataset(tiny_dataset_path, tiny_train_path, tiny_test_path, tiny_header_path, tiny_split)
     split_labels(tiny_train_path, tiny_train_data_path, tiny_train_labels_path)
     split_labels(tiny_test_path, tiny_test_data_path, tiny_test_labels_path)
+
 
 if __name__ == "__main__":
     main()
